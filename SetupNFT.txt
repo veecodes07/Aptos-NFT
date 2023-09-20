@@ -1,0 +1,63 @@
+ This module is the part 1 of our NFT Move tutorial. In this module, we go over how to create a collection and token,
+ and then mint a token to a receiver.
+
+ Generally, there are two types of NFT:
+ 1. Event ticket / certificate: this kind of NFT has a base token, and every new NFT generated from this base token has the same
+ token data id and picture.
+ They are generally used as certificate. Each NFT created from the base token is considered a printing edition of the
+ base token.
+ An example is using this kind of NFT as event ticket: each NFT is a ticket and has properties like expiration_sec:u64, and is_ticket_used:bool.
+ When we mint the NFT, we can set an expiration time for the event ticket and set is_ticket_used to false. When the ticket is used, we can update
+ is_ticket_used to true.
+ 2. Pfp NFT: this kind of NFT has a unique token data id and picture for each token. There are generally no printing editions of this NFT.
+ Most NFT collections on NFT marketplaces are of this kind. They are generally proofs of ownership of an art piece.
+
+ In this tutorial, we are going to go over how to create and mint event ticket NFTs.
+
+ How to interact with this module:
+ 1. Create an account.
+ aptos init (this will create a default account)
+
+ 2. Publish the module.
+ - 2.a Make sure you're in the right directory.
+ Run the following command in directory `aptos-core/aptos-move/move-examples/mint_nft/1-Create-NFT`.
+ - 2.b Run the following CLI command to publish the module.
+ aptos move publish --named-addresses mint_nft=[default account's address]
+ (If you don't know the default account's address, run `nano ~/.aptos/config.yaml` to see all addresses.)
+
+ example output:
+    /*
+    1-Create-NFT % aptos move publish --named-addresses mint_nft=a911e7374107ad434bbc5369289cf5855c3b1a2938a6bfce0776c1d296271cde
+    Compiling, may take a little while to download git dependencies...
+    INCLUDING DEPENDENCY AptosFramework
+    INCLUDING DEPENDENCY AptosStdlib
+    INCLUDING DEPENDENCY AptosToken
+    INCLUDING DEPENDENCY MoveStdlib
+    BUILDING Examples
+    package size 2770 bytes
+    Do you want to submit a transaction for a range of [1164400 - 1746600] Octas at a gas unit price of 100 Octas? [yes/no] >
+    yes
+    {
+      "Result": {
+        "transaction_hash": "0x576a2e9481e71b629335b98ea75c87d124e1b435e843e7a2ef8938ae21bebfa3",
+        "gas_used": 11679,
+        "gas_unit_price": 100,
+        "sender": "a911e7374107ad434bbc5369289cf5855c3b1a2938a6bfce0776c1d296271cde",
+        "sequence_number": 0,
+        "success": true,
+        "timestamp_us": 1669659103283876,
+        "version": 12735152,
+        "vm_status": "Executed successfully"
+      }
+    }
+    */
+ - 2.c Check the module we just published on the Aptos Explorer.
+ Go to https://explorer.aptoslabs.com/. At the top right of the screen, select the network you used (devnet, testnet, etc.).
+ Search for this transaction by putting the `transaction_hash` in the search box. (You'd need to run throught the above steps
+ yourself, and search for the transaction using your own unique transaction hash.)
+ We can see the changes we made by publishing this module under the `Changes` tab.
+
+ 3. Check out the `delayed_mint_event_ticket()` function below - we are not going to run a command to mint the NFT in this part, because
+ this function right now asks for two signers and that's inpractical to do using CLI commands.
+ In the next part of this tutorial, we will introduce a way to programmatically sign for transactions, so the module publisher
+ doesn't need to manually sign transactions, and only needs one signer (the nft receiver's signer) for the `delayed_mint_event_ticket()` function.
