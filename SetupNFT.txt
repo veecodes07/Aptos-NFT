@@ -1,4 +1,4 @@
- This module is the part 1 of our NFT Move tutorial. In this module, we go over how to create a collection and token,
+ In this module, we go over how to create a collection and token,
  and then mint a token to a receiver.
 
  Generally, there are two types of NFT:
@@ -12,7 +12,7 @@
  2. Pfp NFT: this kind of NFT has a unique token data id and picture for each token. There are generally no printing editions of this NFT.
  Most NFT collections on NFT marketplaces are of this kind. They are generally proofs of ownership of an art piece.
 
- In this tutorial, we are going to go over how to create and mint event ticket NFTs.
+ how to create and mint event ticket NFTs.
 
  How to interact with this module:
  1. Create an account.
