@@ -59,5 +59,5 @@
 
  3. Check out the `delayed_mint_event_ticket()` function below - we are not going to run a command to mint the NFT in this part, because
  this function right now asks for two signers and that's inpractical to do using CLI commands.
- In the next part of this tutorial, we will introduce a way to programmatically sign for transactions, so the module publisher
+ In the next part, we will introduce a way to programmatically sign for transactions, so the module publisher
  doesn't need to manually sign transactions, and only needs one signer (the nft receiver's signer) for the `delayed_mint_event_ticket()` function.
